@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bitácora Natalia Pérez</title>
+    <link rel="icon" type="image/png" href="recursos/img/Logo1.png">
+    <style>
+        html, body{
+            height: 100%;
+            margin: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: #f4f7f6;
+        }
+        body{
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+        }
+        header{
+            padding: 30px;
+            background-color: #000661b2;
+        }
+
+        h1 {
+            color: #ffffff;
+            text-shadow: 0 0 7px #fff, 0 0 15px #bf00ff, 0 0 25px #ea2bff;
+            margin: 0;
+        }
+
+        main{
+            flex: 1;
+            padding: 20px;
+            max-width: 900px; /* Un poco más ancho para acomodar la imagen */
+            margin: 0 auto;
+        }
+
+        .semana {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            padding: 20px;
+            margin-bottom: 25px;
+            border-left: 6px solid #3f64f7;
+            text-align: left;
+        }
+
+        /* --- NUEVO: Estilo para poner imagen a la par del texto --- */
+        .contenido-flex {
+            display: flex;
+            align-items: center;
+            gap: 20px; /* Espacio entre texto e imagen */
+            flex-wrap: wrap; /* Para que en móviles se ponga uno abajo del otro */
+        }
+
+        .texto-semana {
+            flex: 1; /* Toma el espacio disponible */
+            min-width: 250px;
+        }
+
+        .imagen-semana {
+            width: 200px; /* Ajusta el tamaño según prefieras */
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+
+        /* Estilo adaptado para el video de la semana 3 */
+        .video-semana {
+            width: 100%;
+            max-width: 500px; /* Evita que el video se vea gigante en pantallas grandes */
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            margin-top: 15px;
+        }
+
+        .pdf-container {
+            margin-top: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        footer{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 50px;
+            border-top: 1px solid #0611b3b2;
+            background-color: #0000ff;
+            color: white;
+        }
+
+        footer img {
+            transition: transform 0.3s ease;
+        }
+        footer img:hover {
+            transform: scale(1.15);
+        }
+
+        @media(max-width:600px){
+            footer{
+                flex-direction: column;
+                gap: 15px;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Bitácora tercera y segunda unidad</h1>
+    </header>
+
+    <main>
+        <h3>Contenido de la página WEB</h3>
+
+        <div class="semana">
+            <div class="contenido-flex">
+                <div class="texto-semana">
+                    <h4>Semana 1: Introducción a Arduino</h4>
+                    <p>En esta semana aprendimos de la plataforma Arduino, sus componentes principales y la diferencia entre señales analógicas y digitales.</p>
+                </div>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkl5vlI1YNpzJLqlx87NfZ_p-6M2f-KSrj5w&s" alt="Placa Arduino" class="imagen-semana">
+            </div>
+            
+            <div class="pdf-container">
+                <embed src="recursos/Introducción.pdf" type="application/pdf" width="100%" height="400px" />
+            </div>
+            <p style="text-align: center; margin-top: 10px;">
+                <a href="recursos/Introducción.pdf" target="_blank" style="color: #3f64f7; text-decoration: none; font-weight: bold;">
+                    📂 Abrir PDF en pantalla completa
+                </a>
+            </p>
+        </div>
+
+        <div class="semana">
+            <h4>Semana 2: Introducción a CSS</h4>
+            <p>Hoy aprendimos a darle estilo a nuestras páginas usando selectores y propiedades básicas.</p>
+            
+            <div class="contenido-flex">
+                <img src="Imagen.jpg" alt="Placa Arduino" class="imagen-semana">
+                
+                <video controls class="imagen-semana">
+                    <source src="recursos/Videofuncion.mp4" type="video/mp4">
+                    Tu navegador no soporta el video.
+                </video>
+            </div>
+        </div>
+
+        <div class="semana">
+            <h4>Semana 3: Arduino</h4>
+            <p>Aprendimos a montar la programación en físico</p>
+            
+            <div style="text-align: center;">
+                <video controls class="video-semana">
+                    <source src="recursos/videosemanatres.mp4" type="video/mp4">
+                    Tu navegador no soporta la reproducción de video.
+                </video>
+            </div>
+        </div>
+    </main>
+
+    <footer>  
+        <span>@naat.peerez</span>
+        <img src="https://www.capouilliez.edu.gt/assets/img/logo.png" height="75" width="300" alt="Logo Colegio">
+    </footer>
+</body>
+</html>
