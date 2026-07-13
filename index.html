@@ -6,121 +6,242 @@
     <title>Bitácora Natalia Pérez</title>
     <link rel="icon" type="image/png" href="recursos/img/Logo1.png">
     <style>
-        html, body{
+        :root {
+            --primary-color: #1e3a8a;
+            --accent-color: #3b82f6;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+        }
+
+        html, body {
             height: 100%;
             margin: 0;
-            font-family: 'Segoe UI', Arial, sans-serif;
-            background-color: #f4f7f6;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
         }
-        body{
+
+        body {
             display: flex;
             flex-direction: column;
+        }
+
+        header {
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
             text-align: center;
         }
-        header{
-            padding: 30px;
-            background-color: #000661b2;
-        }
 
-        h1 {
+        header h1 {
             color: #ffffff;
-            text-shadow: 0 0 7px #fff, 0 0 15px #bf00ff, 0 0 25px #ea2bff;
             margin: 0;
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
         }
 
-        main{
+        main {
             flex: 1;
-            padding: 20px;
-            max-width: 900px; /* Un poco más ancho para acomodar la imagen */
+            padding: 40px 20px;
+            max-width: 850px;
+            width: 100%;
             margin: 0 auto;
+            box-sizing: border-box;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 30px;
+            text-align: center;
+            font-weight: 600;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent-color);
+            margin: 8px auto 0 auto;
+            border-radius: 2px;
         }
 
         .semana {
-            background-color: white;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            padding: 20px;
-            margin-bottom: 25px;
-            border-left: 6px solid #3f64f7;
-            text-align: left;
+            background-color: var(--card-bg);
+            border-radius: 16px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            padding: 30px;
+            margin-bottom: 35px;
+            border-left: 5px solid var(--accent-color);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
-        /* --- NUEVO: Estilo para poner imagen a la par del texto --- */
+        .semana:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        .semana h4 {
+            margin: 0 0 12px 0;
+            color: var(--primary-color);
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .semana p {
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin: 0 0 20px 0;
+            font-size: 1rem;
+        }
+
+        /* Diseño Flexbox para contenido lado a lado */
         .contenido-flex {
             display: flex;
             align-items: center;
-            gap: 20px; /* Espacio entre texto e imagen */
-            flex-wrap: wrap; /* Para que en móviles se ponga uno abajo del otro */
+            gap: 25px;
+            flex-wrap: wrap;
+            margin-top: 15px;
         }
 
         .texto-semana {
-            flex: 1; /* Toma el espacio disponible */
-            min-width: 250px;
+            flex: 1;
+            min-width: 260px;
+        }
+
+        .texto-semana p {
+            margin: 0;
+        }
+
+        /* Estilos multimedia universales */
+        .imagen-semana, .video-semana {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            object-fit: cover;
         }
 
         .imagen-semana {
-            width: 200px; /* Ajusta el tamaño según prefieras */
-            height: auto;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            width: 220px;
         }
 
-        /* Estilo adaptado para el video de la semana 3 */
         .video-semana {
             width: 100%;
-            max-width: 500px; /* Evita que el video se vea gigante en pantallas grandes */
-            height: auto;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-            margin-top: 15px;
+            max-width: 550px;
+            display: block;
+            margin: 15px auto 0 auto;
         }
 
+        /* Contenedor específico para elementos multimedia en fila */
+        .media-grid {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .media-grid .imagen-semana, .media-grid video {
+            width: 100%;
+            max-width: 280px;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        /* Contenedor de PDF */
         .pdf-container {
-            margin-top: 15px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
+            margin-top: 20px;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
             overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
         }
 
-        footer{
+        .pdf-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.2s ease;
+        }
+
+        .pdf-link:hover {
+            color: var(--primary-color);
+            text-decoration: underline;
+        }
+
+        /* Footer moderno */
+        footer {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 50px;
-            border-top: 1px solid #0611b3b2;
-            background-color: #0000ff;
-            color: white;
+            padding: 25px 40px;
+            background-color: #0f172a;
+            color: #94a3b8;
+            font-size: 0.95rem;
+            border-top: 1px solid #1e293b;
+        }
+
+        footer span {
+            font-weight: 500;
+            letter-spacing: 0.5px;
         }
 
         footer img {
-            transition: transform 0.3s ease;
-        }
-        footer img:hover {
-            transform: scale(1.15);
+            max-height: 50px;
+            width: auto;
+            filter: brightness(0) invert(1); /* Hace que el logo se adapte limpiamente al fondo oscuro si es necesario */
+            opacity: 0.8;
+            transition: opacity 0.3s ease, transform 0.3s ease;
         }
 
-        @media(max-width:600px){
-            footer{
+        footer img:hover {
+            opacity: 1;
+            transform: scale(1.05);
+        }
+
+        @media(max-width: 650px) {
+            footer {
                 flex-direction: column;
-                gap: 15px;
+                gap: 20px;
+                text-align: center;
+                padding: 30px 20px;
+            }
+            .semana {
                 padding: 20px;
+            }
+            .contenido-flex {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .imagen-semana {
+                width: 100%;
             }
         }
     </style>
 </head>
 <body>
+
     <header>
-        <h1>Bitácora tercera y segunda unidad</h1>
+        <h1>Bitácora de Tecnología</h1>
     </header>
 
     <main>
-        <h3>Contenido de la página WEB</h3>
+        <h3 class="section-title">Contenido del Portafolio Web</h3>
 
         <div class="semana">
             <div class="contenido-flex">
                 <div class="texto-semana">
                     <h4>Semana 1: Introducción a Arduino</h4>
-                    <p>En esta semana aprendimos de la plataforma Arduino, sus componentes principales y la diferencia entre señales analógicas y digitales.</p>
+                    <p>En esta semana aprendimos sobre la plataforma Arduino, descubriendo sus componentes principales y comprendiendo la diferencia crítica entre señales analógicas y digitales.</p>
                 </div>
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkl5vlI1YNpzJLqlx87NfZ_p-6M2f-KSrj5w&s" alt="Placa Arduino" class="imagen-semana">
             </div>
@@ -128,21 +249,20 @@
             <div class="pdf-container">
                 <embed src="recursos/Introducción.pdf" type="application/pdf" width="100%" height="400px" />
             </div>
-            <p style="text-align: center; margin-top: 10px;">
-                <a href="recursos/Introducción.pdf" target="_blank" style="color: #3f64f7; text-decoration: none; font-weight: bold;">
-                    📂 Abrir PDF en pantalla completa
+            <div style="text-align: center;">
+                <a href="recursos/Introducción.pdf" target="_blank" class="pdf-link">
+                    📂 Abrir documento PDF en pantalla completa
                 </a>
-            </p>
+            </div>
         </div>
 
         <div class="semana">
             <h4>Semana 2: Introducción a CSS</h4>
-            <p>Hoy aprendimos a darle estilo a nuestras páginas usando selectores y propiedades básicas.</p>
+            <p>Hoy aprendimos las bases del diseño web. Descubrimos cómo darle estilo y personalidad a nuestras páginas usando selectores, clases y propiedades básicas de color y estructura.</p>
             
-            <div class="contenido-flex">
-                <img src="Imagen.jpg" alt="Placa Arduino" class="imagen-semana">
-                
-                <video controls class="imagen-semana">
+            <div class="media-grid">
+                <img src="Imagen.jpg" alt="Ejemplo CSS" class="imagen-semana">
+                <video controls>
                     <source src="recursos/Videofuncion.mp4" type="video/mp4">
                     Tu navegador no soporta el video.
                 </video>
@@ -150,21 +270,40 @@
         </div>
 
         <div class="semana">
-            <h4>Semana 3: Arduino</h4>
-            <p>Aprendimos a montar la programación en físico</p>
+            <h4>Semana 3: Arduino en Físico</h4>
+            <p>Pasamos de la teoría a la práctica: aprendimos a estructurar y montar la programación directamente en los componentes físicos del circuito de Arduino.</p>
             
-            <div style="text-align: center;">
-                <video controls class="video-semana">
-                    <source src="recursos/videosemanatres.mp4" type="video/mp4">
-                    Tu navegador no soporta la reproducción de video.
-                </video>
-            </div>
+            <video controls class="video-semana">
+                <source src="recursos/videosemanatres.mp4" type="video/mp4">
+                Tu navegador no soporta la reproducción de video.
+            </video>
+        </div>
+
+        <div class="semana">
+            <h4>Semana 4: Avances del Proyecto</h4>
+            <p>Continuamos expandiendo nuestros conocimientos y documentando los avances prácticos realizados durante esta semana de clases.</p>
+            
+            <video controls class="video-semana">
+                <source src="recursos/VideoSem4.mp4" type="video/mp4">
+                Tu navegador no soporta la reproducción de video.
+            </video>
+        </div>
+
+        <div class="semana">
+            <h4>Semana 5: Conclusión y Cierre</h4>
+            <p>Finalización del ciclo de bitácoras y consolidación de todo lo aprendido en el ensamblaje y desarrollo del código.</p>
+            
+            <video controls class="video-semana">
+                <source src="recursos/VideoSem5.mp4" type="video/mp4">
+                Tu navegador no soporta la reproducción de video.
+            </video>
         </div>
     </main>
 
     <footer>  
         <span>@naat.peerez</span>
-        <img src="https://www.capouilliez.edu.gt/assets/img/logo.png" height="75" width="300" alt="Logo Colegio">
+        <img src="https://www.capouilliez.edu.gt/assets/img/logo.png" alt="Logo Colegio">
     </footer>
+
 </body>
 </html>
