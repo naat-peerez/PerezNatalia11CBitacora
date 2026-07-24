@@ -5,21 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bitácora Natalia Pérez</title>
     <link rel="icon" type="image/png" href="recursos/img/Logo1.png">
+    
+    <!-- Fuente moderna -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
     <style>
         :root {
-            --primary-color: #1e3a8a;
-            --accent-color: #3b82f6;
-            --bg-color: #f8fafc;
-            --card-bg: #ffffff;
-            --text-main: #1e293b;
-            --text-muted: #64748b;
+            --primary: #2563eb;
+            --primary-dark: #1e40af;
+            --accent: #38bdf8;
+            --bg-color: #0f172a;
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --card-border: rgba(255, 255, 255, 0.08);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+        }
+
+        * {
+            box-sizing: border-box;
         }
 
         html, body {
-            height: 100%;
+            min-height: 100%;
             margin: 0;
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
             background-color: var(--bg-color);
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(37, 99, 235, 0.15) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(56, 189, 248, 0.1) 0px, transparent 50%);
+            background-attachment: fixed;
             color: var(--text-main);
         }
 
@@ -29,68 +45,95 @@
         }
 
         header {
-            padding: 40px 20px;
-            background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            padding: 60px 20px 40px;
             text-align: center;
+            position: relative;
         }
 
         header h1 {
             color: #ffffff;
             margin: 0;
-            font-size: 2.2rem;
-            font-weight: 700;
-            letter-spacing: -0.5px;
+            font-size: 2.8rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            background: linear-gradient(135deg, #ffffff 0%, #93c5fd 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        header p {
+            color: var(--text-muted);
+            margin-top: 10px;
+            font-size: 1.1rem;
         }
 
         main {
             flex: 1;
-            padding: 40px 20px;
-            max-width: 850px;
+            padding: 20px;
+            max-width: 900px;
             width: 100%;
             margin: 0 auto;
-            box-sizing: border-box;
         }
 
         .section-title {
-            font-size: 1.5rem;
-            color: var(--primary-color);
-            margin-bottom: 30px;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
+            margin-bottom: 35px;
             text-align: center;
-            font-weight: 600;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 50px;
-            height: 3px;
-            background-color: var(--accent-color);
-            margin: 8px auto 0 auto;
-            border-radius: 2px;
+            font-weight: 700;
         }
 
         .semana {
-            background-color: var(--card-bg);
-            border-radius: 16px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
-            padding: 30px;
-            margin-bottom: 35px;
-            border-left: 5px solid var(--accent-color);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 32px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .semana::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--primary), var(--accent));
         }
 
         .semana:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            transform: translateY(-4px);
+            border-color: rgba(56, 189, 248, 0.3);
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.6);
+        }
+
+        .tag-semana {
+            display: inline-block;
+            padding: 4px 12px;
+            background: rgba(37, 99, 235, 0.2);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            color: var(--accent);
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+            text-transform: uppercase;
         }
 
         .semana h4 {
-            margin: 0 0 12px 0;
-            color: var(--primary-color);
-            font-size: 1.3rem;
-            font-weight: 600;
+            margin: 0 0 10px 0;
+            color: #ffffff;
+            font-size: 1.4rem;
+            font-weight: 700;
         }
 
         .semana p {
@@ -100,7 +143,6 @@
             font-size: 1rem;
         }
 
-        /* Diseño Flexbox para contenido lado a lado */
         .contenido-flex {
             display: flex;
             align-items: center;
@@ -118,97 +160,102 @@
             margin: 0;
         }
 
-        /* Estilos multimedia universales */
-        .imagen-semana, .video-semana {
-            max-width: 100%;
-            height: auto;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-            object-fit: cover;
+        /* Multimedia */
+        .imagen-semana, .video-semana, video {
+            border-radius: 12px;
+            border: 1px solid var(--card-border);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
         }
 
         .imagen-semana {
             width: 220px;
+            height: 140px;
+            object-fit: cover;
         }
 
         .video-semana {
             width: 100%;
-            max-width: 550px;
+            max-width: 100%;
             display: block;
-            margin: 15px auto 0 auto;
+            margin-top: 15px;
+            background-color: #000000;
         }
 
-        /* Contenedor específico para elementos multimedia en fila */
         .media-grid {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-            justify-content: center;
-            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
         }
 
         .media-grid .imagen-semana, .media-grid video {
             width: 100%;
-            max-width: 280px;
-            height: 180px;
+            height: 200px;
             object-fit: cover;
         }
 
-        /* Contenedor de PDF */
+        /* Visualizador PDF */
         .pdf-container {
             margin-top: 20px;
-            border: 1px solid #e2e8f0;
+            border: 1px solid var(--card-border);
             border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+            background: #000;
         }
 
         .pdf-link {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
             margin-top: 15px;
-            color: var(--accent-color);
+            color: var(--accent);
             text-decoration: none;
             font-weight: 600;
-            font-size: 0.95rem;
-            transition: color 0.2s ease;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
         }
 
         .pdf-link:hover {
-            color: var(--primary-color);
-            text-decoration: underline;
+            background: rgba(56, 189, 248, 0.15);
+            color: #ffffff;
         }
 
-        /* Footer moderno */
+        /* Footer */
         footer {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 25px 40px;
-            background-color: #0f172a;
-            color: #94a3b8;
-            font-size: 0.95rem;
-            border-top: 1px solid #1e293b;
+            padding: 30px 50px;
+            background: rgba(15, 23, 42, 0.9);
+            border-top: 1px solid var(--card-border);
+            margin-top: 50px;
         }
 
         footer span {
-            font-weight: 500;
+            color: var(--text-muted);
+            font-weight: 600;
             letter-spacing: 0.5px;
         }
 
         footer img {
-            max-height: 50px;
+            max-height: 45px;
             width: auto;
-            filter: brightness(0) invert(1); /* Hace que el logo se adapte limpiamente al fondo oscuro si es necesario */
-            opacity: 0.8;
-            transition: opacity 0.3s ease, transform 0.3s ease;
+            filter: brightness(0) invert(1);
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
         }
 
         footer img:hover {
             opacity: 1;
-            transform: scale(1.05);
         }
 
         @media(max-width: 650px) {
+            header h1 {
+                font-size: 2rem;
+            }
             footer {
                 flex-direction: column;
                 gap: 20px;
@@ -216,14 +263,14 @@
                 padding: 30px 20px;
             }
             .semana {
-                padding: 20px;
+                padding: 24px;
             }
             .contenido-flex {
                 flex-direction: column;
-                align-items: stretch;
             }
             .imagen-semana {
                 width: 100%;
+                height: auto;
             }
         }
     </style>
@@ -232,15 +279,18 @@
 
     <header>
         <h1>Bitácora de Tecnología</h1>
+        <p>Portafolio digital de proyectos y aprendizajes</p>
     </header>
 
     <main>
-        <h3 class="section-title">Contenido del Portafolio Web</h3>
+        <div class="section-title">Contenido del Portafolio</div>
 
+        <!-- Semana 1 -->
         <div class="semana">
+            <span class="tag-semana">Semana 01</span>
             <div class="contenido-flex">
                 <div class="texto-semana">
-                    <h4>Semana 1: Introducción a Arduino</h4>
+                    <h4>Introducción a Arduino</h4>
                     <p>En esta semana aprendimos sobre la plataforma Arduino, descubriendo sus componentes principales y comprendiendo la diferencia crítica entre señales analógicas y digitales.</p>
                 </div>
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkl5vlI1YNpzJLqlx87NfZ_p-6M2f-KSrj5w&s" alt="Placa Arduino" class="imagen-semana">
@@ -256,8 +306,10 @@
             </div>
         </div>
 
+        <!-- Semana 2 -->
         <div class="semana">
-            <h4>Semana 2: Introducción a CSS</h4>
+            <span class="tag-semana">Semana 02</span>
+            <h4>Introducción a CSS</h4>
             <p>Hoy aprendimos las bases del diseño web. Descubrimos cómo darle estilo y personalidad a nuestras páginas usando selectores, clases y propiedades básicas de color y estructura.</p>
             
             <div class="media-grid">
@@ -269,8 +321,10 @@
             </div>
         </div>
 
+        <!-- Semana 3 -->
         <div class="semana">
-            <h4>Semana 3: Arduino en Físico</h4>
+            <span class="tag-semana">Semana 03</span>
+            <h4>Arduino en Físico</h4>
             <p>Pasamos de la teoría a la práctica: aprendimos a estructurar y montar la programación directamente en los componentes físicos del circuito de Arduino.</p>
             
             <video controls class="video-semana">
@@ -279,8 +333,10 @@
             </video>
         </div>
 
+        <!-- Semana 4 -->
         <div class="semana">
-            <h4>Semana 4: Avances del Proyecto</h4>
+            <span class="tag-semana">Semana 04</span>
+            <h4>Avances del Proyecto</h4>
             <p>Continuamos expandiendo nuestros conocimientos y documentando los avances prácticos realizados durante esta semana de clases.</p>
             
             <video controls class="video-semana">
@@ -289,8 +345,10 @@
             </video>
         </div>
 
+        <!-- Semana 5 -->
         <div class="semana">
-            <h4>Semana 5: Conclusión y Cierre</h4>
+            <span class="tag-semana">Semana 05</span>
+            <h4>Conclusión y Cierre</h4>
             <p>Finalización del ciclo de bitácoras y consolidación de todo lo aprendido en el ensamblaje y desarrollo del código.</p>
             
             <video controls class="video-semana">
@@ -299,9 +357,11 @@
             </video>
         </div>
 
+        <!-- Semana 6 -->
         <div class="semana">
-            <h4>Semana 6: Sensor video</h4>
-            <p>video de funcionamiento del sensor dependiendo de la distancia.</p>
+            <span class="tag-semana">Semana 06</span>
+            <h4>Sensor de Distancia</h4>
+            <p>Video de funcionamiento del sensor midiendo diferentes rangos de distancia en tiempo real.</p>
             
             <video controls class="video-semana">
                 <source src="recursos/GrabacionNat.mp4" type="video/mp4">
@@ -309,21 +369,27 @@
             </video>
         </div>
 
-         <div class="semana">
-            <h4>Semana 7: Sensor</h4>
-            <p>video de funcionamiento del sensor nuevo dependiendo de la distancia.</p>
+        <!-- Semana 7 (NUEVA) -->
+        <div class="semana">
+            <span class="tag-semana">Semana 07</span>
+            <h4>Demostración Final</h4>
+            <p>Presentación y prueba completa de funcionamiento del proyecto integrado.</p>
             
             <video controls class="video-semana">
                 <source src="recursos/vide2.mp4" type="video/mp4">
                 Tu navegador no soporta la reproducción de video.
             </video>
         </div>
+
     </main>
 
     <footer>  
         <span>@naat.peerez</span>
         <img src="https://www.capouilliez.edu.gt/assets/img/logo.png" alt="Logo Colegio">
     </footer>
+
+</body>
+</html>
 
 </body>
 </html>
